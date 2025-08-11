@@ -1,0 +1,23 @@
+# PyTorch CPU (versions comme en Colab)
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0
+
+# Pandas
+pandas==2.2.3
+
+# Whisper (depuis GitHub)
+git+https://github.com/openai/whisper.git
+
+# WhisperX
+whisperx==3.4.2
+
+# Diarisation
+pyannote.audio==3.3.2
+huggingface_hub
+
+# Outils email & audio
+yagmail
+python-dotenv
+pydub
+soundfile
