@@ -7,6 +7,8 @@ import yagmail
 from dotenv import load_dotenv
 from pathlib import Path
 from pydub import AudioSegment
+MODEL_SIZE = "small"  # ou "small", "medium", "large-v2"
+
 
 # Chargement variables d'environnement
 load_dotenv()
@@ -39,7 +41,8 @@ def transcribe_audio(audio_path):
     model = whisperx.load_model(MODEL_SIZE, device, compute_type="int8")
     audio = whisperx.load_audio(str(audio_path))
     result = model.transcribe(audio, batch_size=8)
-    return result.get("text", "")
+        return result.get("text", "").strip()
+
 
 def send_email(subject: str, body: str):
     """Envoie la transcription par email via Gmail (mot de passe d'application)."""
