@@ -34,12 +34,13 @@ def record_audio():
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return output_mp3
 def transcribe_audio(audio_path):
-    """Transcrit l'audio avec WhisperX."""
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model = whisperx.load_model(MODEL_SIZE, device)
+    """Transcrit l'audio avec WhisperX (CPU)"""
+    device = "cpu"
+    model = whisperx.load_model(MODEL_SIZE, device, compute_type="int8")
     audio = whisperx.load_audio(str(audio_path))
-    result = model.transcribe(audio)
+    result = model.transcribe(audio, batch_size=8)
     return result.get("text", "")
+
 def send_email(subject: str, body: str):
     """Envoie la transcription par email via Gmail (mot de passe d'application)."""
     email_from = os.getenv("EMAIL_FROM")
