@@ -41,7 +41,7 @@ def transcribe_audio(audio_path):
     model = whisperx.load_model(MODEL_SIZE, device, compute_type="int8")
     audio = whisperx.load_audio(str(audio_path))
     result = model.transcribe(audio, batch_size=8)
-        return result.get("text", "").strip()
+    return result.get("text", "").strip()
 
 
 def send_email(subject: str, body: str):
