@@ -15,7 +15,7 @@ load_dotenv()
 
 # Paramètres
 AUDIO_URL = "http://audio.bfmtv.com/bfmbusiness_128.mp3"
-RECORD_SECONDS = 15  # Pour test rapide
+RECORD_SECONDS = 60  # Pour test rapide
 OUTPUT_DIR = Path("run_cache")
 OUTPUT_DIR.mkdir(exist_ok=True)
 MODEL_SIZE = "small"  # rapide pour test
